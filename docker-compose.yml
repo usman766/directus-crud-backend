@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  directus:
+    image: directus/directus:latest
+    ports:
+      - 8055:8055
+    environment:
+      KEY: 'randomgeneratedkey'
+      SECRET: 'yoursecret'
+      DB_CLIENT: 'sqlite3' # or postgres/mysql
+      DB_FILENAME: '/data/data.db'
+    volumes:
+      - ./data:/data
