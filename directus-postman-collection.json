@@ -1,0 +1,164 @@
+{
+    "info": {
+      "_postman_id": "directus-user-profile-crud",
+      "name": "Directus User Profile CRUD",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "description": "CRUD operations for Directus 'profiles' collection with variable-based environment."
+    },
+    "item": [
+      {
+        "name": "Login",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"password\"\n}"
+          },
+          "url": {
+            "raw": "{{base_url}}/auth/login",
+            "host": ["{{base_url}}"],
+            "path": ["auth", "login"]
+          }
+        }
+      },
+      {
+        "name": "Get All Profiles",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{access_token}}"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/items/profiles",
+            "host": ["{{base_url}}"],
+            "path": ["items", "profiles"]
+          }
+        }
+      },
+      {
+        "name": "Get Single Profile",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{access_token}}"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/items/profiles/1",
+            "host": ["{{base_url}}"],
+            "path": ["items", "profiles", "1"]
+          }
+        }
+      },
+      {
+        "name": "Create Profile",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{access_token}}"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"phone\": \"1234567890\",\n    \"bio\": \"Sample bio\",\n    \"avatar\": null\n}"
+          },
+          "url": {
+            "raw": "{{base_url}}/items/profiles",
+            "host": ["{{base_url}}"],
+            "path": ["items", "profiles"]
+          }
+        }
+      },
+      {
+        "name": "Update Profile",
+        "request": {
+          "method": "PATCH",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{access_token}}"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"phone\": \"0987654321\",\n    \"bio\": \"Updated bio\"\n}"
+          },
+          "url": {
+            "raw": "{{base_url}}/items/profiles/1",
+            "host": ["{{base_url}}"],
+            "path": ["items", "profiles", "1"]
+          }
+        }
+      },
+      {
+        "name": "Delete Profile",
+        "request": {
+          "method": "DELETE",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{access_token}}"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/items/profiles/1",
+            "host": ["{{base_url}}"],
+            "path": ["items", "profiles", "1"]
+          }
+        }
+      },
+      {
+        "name": "Upload Avatar File",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{access_token}}"
+            },
+            {
+              "key": "Content-Type",
+              "value": "multipart/form-data"
+            }
+          ],
+          "body": {
+            "mode": "formdata",
+            "formdata": [
+              {
+                "key": "file",
+                "type": "file",
+                "src": ""
+              }
+            ]
+          },
+          "url": {
+            "raw": "{{base_url}}/files",
+            "host": ["{{base_url}}"],
+            "path": ["files"]
+          }
+        }
+      }
+    ]
+  }
+  
